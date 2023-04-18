@@ -1,0 +1,23 @@
+{
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "cse_341 project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thankgodandrew1/cse341.git"
+  },
+  "author": "ThankGod Andrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thankgodandrew1/cse341/issues"
+  },
+  "homepage": "https://github.com/thankgodandrew1/cse341#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
