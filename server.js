@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const homeRoute = require("./routes/home");
 const contactsRoute = require("./routes/contacts");
-const db = require("./db");
+const db = require("./database/db");
 
 const app = express();
 const port = process.env.PORT || 3000;
