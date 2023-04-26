@@ -1,0 +1,27 @@
+# Get all contacts
+GET http://localhost:3000/contacts
+
+###
+# Get a first contact by ID
+GET http://localhost:3000/contacts/64484122010833ed36b9dcab
+
+###
+# Get second contact by ID
+GET http://localhost:3000/contacts/6448421a010833ed36b9dcac
+
+###
+# Get third contact by ID
+GET http://localhost:3000/contacts/644842e9010833ed36b9dcad
+
+//PRODUCTION DEPLOY
+###
+GET https://cse341-web-service.onrender.com/contacts
+
+###
+https://cse341-web-service.onrender.com/64484122010833ed36b9dcab
+
+###
+https://cse341-web-service.onrender.com/6448421a010833ed36b9dcac
+
+###
+https://cse341-web-service.onrender.com/644842e9010833ed36b9dcad

@@ -1,17 +1,46 @@
-// Require the express module and home route
-const express = require('express');
-const homeRoute = require('./routes/home');
+const express = require("express");
+const dotenv = require("dotenv");
+const homeRoute = require("./routes/home");
+const contactsRoute = require("./routes/contacts");
+const db = require("./db");
 
-// Create a new instance of the express application, const for port and hostname
 const app = express();
-const port = process.env.PORT || 3000; // use environment port on render, else use port 3000
-const hostname = '127.0.0.1';
+const port = process.env.PORT || 3000;
+const hostname = "127.0.0.1";
 
-// Use the homeRoutes module to handle requests to the home page
-app.use('/', homeRoute);
+dotenv.config();
 
-// Start the server and listen for incoming requests on port 3000
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+db.connect()
+  .then((contactsCollection) => {
+    app.locals.contactsCollection = contactsCollection;
+    app.use(express.json());
+
+    // pass the contacts collection to the contacts route
+    app.use("/contacts", contactsRoute(contactsCollection));
+
+    // use the home route for all other routes
+    app.use("/", homeRoute);
+
+    app.use((req, res, next) => {
+      const error = new Error("Not found");
+      error.status = 404;
+      next(error);
+    });
+
+    app.use((error, req, res, next) => {
+      res.status(error.status || 500);
+      res.json({
+        error: {
+          message: error.message,
+        },
+      });
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
   });
-  
+
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
