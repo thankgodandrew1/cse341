@@ -4,8 +4,8 @@
   "description": "cse_341 project",
   "main": "server.js",
   "engines" : {
-     "npm" : "20.0.0",
-     "node" : "9.6.5"
+     "node" : "20.0.0",
+     "npm" : "9.6.5"
     },
    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
