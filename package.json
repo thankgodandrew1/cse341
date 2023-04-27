@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "cse_341 project",
   "main": "server.js",
-  "scripts": {
+  "engines" : {
+     "npm" : "20.0.0",
+     "node" : "9.6.5"
+    },
+   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev-start": "nodemon server.js"
