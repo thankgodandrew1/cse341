@@ -1,27 +1,79 @@
+@baseUrl = http://localhost:3000
+
+@renderBaseUrl = https://cse341-web-service.onrender.com
+
 # Get all contacts
-GET http://localhost:3000/contacts
+GET {{baseUrl}}/contacts
 
 ###
 # Get a first contact by ID
-GET http://localhost:3000/contacts/64484122010833ed36b9dcab
+GET {{baseUrl}}/contacts/64484122010833ed36b9dcab
 
-###
-# Get second contact by ID
-GET http://localhost:3000/contacts/6448421a010833ed36b9dcac
+### POST /contacts
 
-###
-# Get third contact by ID
-GET http://localhost:3000/contacts/644842e9010833ed36b9dcad
+POST {{baseUrl}}/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "favoriteColor": "pink",
+  "birthday": "25th August 1900"
+}
+
+### PUT /contacts/:id
+
+PUT {{baseUrl}}/contacts/64484122010833ed36b9dcab HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Precious",
+  "lastName": "Jasper",
+  "email": "pjmax23@gmail.com",
+  "favoriteColor": "pink",
+  "birthday": "26th March, 2002"
+}
+
+### DELETE /contacts/:id
+
+DELETE {{baseUrl}}/contacts/6451523e52488b5ce911d9bd HTTP/1.1
+
 
 //PRODUCTION DEPLOY
 ###
-GET https://cse341-web-service.onrender.com/contacts
+GET {{@renderBaseUrl}}/contacts
+
 
 ###
-https://cse341-web-service.onrender.com/64484122010833ed36b9dcab
+GET {{@renderBaseUrl}}/contacts/644842e9010833ed36b9dcad
 
-###
-https://cse341-web-service.onrender.com/6448421a010833ed36b9dcac
+### POST /contacts
 
-###
-https://cse341-web-service.onrender.com/644842e9010833ed36b9dcad
+POST {{renderBaseUrl}}/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "favoriteColor": "pink",
+  "birthday": "25th August 1900"
+}
+
+### PUT /contacts/:id
+
+PUT {{renderBaseUrl}}/contacts/64484122010833ed36b9dcab HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Precious",
+  "lastName": "Jasper",
+  "email": "pjmax23@gmail.com",
+  "favoriteColor": "pink",
+  "birthday": "26th March, 2002"
+}
+
+### DELETE /contacts/:id
+
+DELETE {{renderBaseUrl}}/contacts/64514f2f52488b5ce911d9bc HTTP/1.1
