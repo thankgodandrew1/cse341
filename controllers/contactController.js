@@ -54,7 +54,7 @@ module.exports = (contactsCollection) => {
       if (result.deletedCount === 0) {
         return res.status(404).send('Contact not found');
       }
-      res.sendStatus(204);
+      res.sendStatus(200);
     } catch (error) {
       console.error(error);
       res.status(500).send('Server error');
