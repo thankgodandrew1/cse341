@@ -6,7 +6,7 @@ const db = require('./database/db');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const hostname = '127.0.0.1';
+// const hostname = '127.0.0.1';
 
 dotenv.config();
 
@@ -40,6 +40,6 @@ db.connect()
     console.error(error);
   });
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running at ${port}`);
 });
