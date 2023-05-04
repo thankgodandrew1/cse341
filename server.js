@@ -38,7 +38,6 @@ db.connect()
   })
   .catch((error) => {
     console.error(error);
-    process.exit(1);
   });
 
 app.listen(port, hostname, () => {
