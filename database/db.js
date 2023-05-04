@@ -12,6 +12,7 @@ const connect = async () => {
     return contactsCollection;
   } catch (error) {
     console.error(error);
+    throw new Error('Unable to connect to MongoDB');
   }
 };
 
