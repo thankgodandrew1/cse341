@@ -44,7 +44,7 @@ db.connect()
   });
 
 // use the swagger UI to serve API documentation
-app.use('/contacts/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
