@@ -10,7 +10,6 @@ const docs = {
       description: 'An API to manage contacts'
     },
     host: 'cse341-web-service.onrender.com',
-    basePath: '/contacts',
     schemes: ['https']
   };
 
