@@ -1,6 +1,7 @@
 //server.js entry point
 const express = require('express');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 
 const homeRoute = require('./routes/home');
 const contactsRoute = require('./routes/contacts');
@@ -29,7 +30,11 @@ db.connect()
       error.status = 404;
       next(error);
     });
-
+    app.use(bodyParser.json())
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  })
     app.use((error, req, res, next) => {
       res.status(error.status || 500);
       res.json({
