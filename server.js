@@ -1,7 +1,7 @@
 //server.js entry point
 const express = require('express');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const homeRoute = require('./routes/home');
 const contactsRoute = require('./routes/contacts');
@@ -14,6 +14,9 @@ const port = process.env.PORT || 3000;
 
 dotenv.config();
 
+// Enabled CORS for all requests
+app.use(cors());
+
 db.connect()
   .then((contactsCollection) => {
     app.locals.contactsCollection = contactsCollection;
@@ -25,23 +28,12 @@ db.connect()
     // use the home route for all other routes
     app.use('/', homeRoute);
 
-    app.use(bodyParser.json());
-    app.use((req, res, next) => {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-key'
-      );
-      res.setHeader('Content-Type', 'application/json');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-      next();
-    });
-
     app.use((req, res, next) => {
       const error = new Error('Not found');
       error.status = 404;
       next(error);
     });
+
     app.use((error, req, res, next) => {
       res.status(error.status || 500);
       res.json({
