@@ -35,7 +35,7 @@ Content-Type: application/json
 
 ### DELETE /contacts/:id
 
-DELETE {{baseUrl}}/contacts/6451523e52488b5ce911d9bd HTTP/1.1
+DELETE {{baseUrl}}/contacts/645d564e593e6d4378fc5e46 HTTP/1.1
 
 
 //PRODUCTION DEPLOY
@@ -74,4 +74,4 @@ Content-Type: application/json
 
 ### DELETE /contacts/:id
 
-DELETE https://cse341-web-service.onrender.com/contacts/64514f2f52488b5ce911d9bc HTTP/1.1
+DELETE https://cse341-web-service.onrender.com/contacts/64541bfb4efcd4818ea63d50 HTTP/1.1

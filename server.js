@@ -1,12 +1,15 @@
+//server.js entry point
 const express = require('express');
 const dotenv = require('dotenv');
+
 const homeRoute = require('./routes/home');
 const contactsRoute = require('./routes/contacts');
 const db = require('./database/db');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
 const app = express();
 const port = process.env.PORT || 3000;
-// const hostname = '127.0.0.1';
 
 dotenv.config();
 
@@ -39,6 +42,9 @@ db.connect()
   .catch((error) => {
     console.error(error);
   });
+
+// use the swagger UI to serve API documentation
+app.use('/contacts/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
